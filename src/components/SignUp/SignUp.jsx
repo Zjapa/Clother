@@ -1,4 +1,6 @@
 import React, { useState, useReducer } from 'react';
+import InputForm from '../InputForm/InputForm';
+import './SignUp.styles.scss'
 
 import { createNewUserWithEmailAndPassword, createUserDocumentFromAuth } from '../../utils/firebase/firebase.utils';
 
@@ -23,7 +25,7 @@ const SignUp = () => {
     const handleSignUp = async (e) => {
         e.preventDefault();
         if (password !== confirmPassword) {
-            console.log('PASSWORDS DONT MATCH');
+            console.log('PASSWORDS DO NOT MATCH');
             return;
         }
 
@@ -36,65 +38,54 @@ const SignUp = () => {
     };
 
     return (
-        <div>
-            <h1>I do not have a account</h1>
-            <h2>Sign up with your email and password</h2>
+        <div className='sign-up-container'>
+            <h1 className='sign-up-title'>I do not have a account</h1>
+            <h2 className='sign-up-subtitle'>Sign up with your email and password</h2>
             <form className="sign-up-form" onSubmit={handleSignUp}>
-                <input
+                <InputForm
                     type="text"
                     autoComplete="off"
                     name="displayName"
                     id="name"
-                    className="input-name"
                     onChange={handleValues}
                     value={displayName}
+                    label="Display name"
                     required
                 />
-                <label htmlFor="name" className="name-label" placeholder="">
-                    Display name
-                </label>
 
-                <input
+                <InputForm
                     type="email"
                     autoComplete="off"
                     name="email"
                     id="email"
-                    className="input-email"
                     onChange={handleValues}
                     value={email}
+                    label="Email"
                     required
                 />
-                <label htmlFor="email" className="email-label" placeholder="">
-                    Email
-                </label>
 
-                <input
+                <InputForm
                     type="password"
                     autoComplete="off"
                     name="password"
                     id="password"
-                    className="input-password"
                     onChange={handleValues}
                     value={password}
+                    label="Password"
                     required
                 />
-                <label htmlFor="password" className="password-label">
-                    Password
-                </label>
 
-                <input
+                <InputForm
                     type="password"
                     autoComplete="off"
                     name="confirmPassword"
                     id="confirm-password"
-                    className="input-confirm-password"
                     onChange={handleValues}
                     value={confirmPassword}
+                    label="Confirm Password"
                     required
                 />
-                <label htmlFor="confirm-password" className="confirm-password-label">
-                    Confirm Password
-                </label>
+
                 <button type="submit">Sign up</button>
             </form>
         </div>

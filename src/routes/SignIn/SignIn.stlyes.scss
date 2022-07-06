@@ -1,7 +1,17 @@
 .form-container {
-    width: 100%;
-    max-width: 1200px;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.41);
+    display: flex;
+    justify-content: center;
+    margin: 0 20px;
+    .form-content {
+        width: 100%;
+        max-width: 1200px;
+        border-radius: 10px;
+        box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.41);
+        display: flex;
+        justify-content: space-between;
+        overflow: hidden;
+        .sign-in-container {
+            width: 100%;
+        }
+    }
 }

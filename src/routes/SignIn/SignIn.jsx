@@ -11,9 +11,13 @@ const SignIn = () => {
 
     return (
         <div className="form-container">
-            <h1>SignIn</h1>
-            <button onClick={logGoogleUser}>Sign in with Google</button>
-            <SignUp />
+            <div className="form-content">
+                <div className='sign-in-container'>
+                    <h1>SignIn</h1>
+                    <button onClick={logGoogleUser}>Sign in with Google</button>
+                </div>
+                <SignUp />
+            </div>
         </div>
     );
 };
