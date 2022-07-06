@@ -1,18 +1,34 @@
 .form-input-container {
-    max-width: 400px;
+  max-width: 400px;
+  width: 100%;
+  height: 50px;
+  position: relative;
+  margin-bottom: 40px;
+  .form-input {
     width: 100%;
-    height: 40px;
-    position: relative;
-    margin-bottom: 40px;
-    .form-input {
-        width: 100%;
-        height: 100%;
-        background: transparent;
-        border: 2px solid #78e08f;
-        border-radius: 10px;
-        outline: none;
+    height: 100%;
+    background: transparent;
+    border: 2px solid #78e08f;
+    border-radius: 10px;
+    outline: none;
+    padding: 0px 18px;
+    font-size: 20px;
+    color: #ffff;
+
+    &:focus + label,
+    &:not(:placeholder-shown).form-input:not(:focus) ~ label {
+      top: -11px;
+      font-size: 14px;
+      color: rgb(210, 210, 210);
     }
-    .name-label {
-        color: #ffff;
-    }
+  }
+  .name-label {
+    position: absolute;
+    top: 13px;
+    left: 15px;
+    color: #ffff;
+    background: #334252;
+    padding: 0 5px;
+    transition: top 0.3s, font-size 0.3s, color 0.3s;
+  }
 }
