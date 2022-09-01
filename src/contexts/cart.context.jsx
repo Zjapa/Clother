@@ -1,17 +1,36 @@
-import { createContext, useState } from 'react';
+import { createContext, useState } from "react";
 
 export const CartContext = createContext();
 
+const updateCartItems = (cartItems, productToAdd) => {
+  const productExist = cartItems.find((item) => item.id === productToAdd.id);
+
+  if (productExist) {
+    return cartItems.map((item) =>
+      item.id === productToAdd.id
+        ? { ...item, quantity: item.quantity + 1 }
+        : item,
+    );
+  }
+
+  return [...cartItems, { ...productToAdd, quantity: 1 }];
+};
+
 export const CartProvider = () => {
-    const [openCart, setOpenCart] = useState(false);
-    const [cartItems, setCartItems] = useState([]);
+  const [openCart, setOpenCart] = useState(false);
+  const [cartItems, setCartItems] = useState([]);
 
-    const value = {
-        openCart,
-        setOpenCart,
-        cartItems,
-        setCartItems
-    }
+  const addItemToCart = (productToAdd) => {
+    setCartItems(updateCartItems(cartItems, productToAdd));
+  };
 
-    return value;
+  const value = {
+    openCart,
+    setOpenCart,
+    cartItems,
+    setCartItems,
+    addItemToCart,
+  };
+
+  return value;
 };

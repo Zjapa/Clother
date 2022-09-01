@@ -1,26 +1,29 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect } from "react";
 
-import { onAuthStateChangedListener, createUserDocumentFromAuth } from '../utils/firebase/firebase.utils';
+import {
+  onAuthStateChangedListener,
+  createUserDocumentFromAuth,
+} from "../utils/firebase/firebase.utils";
 
 export const UserContext = createContext({
-    setCurrentUser: () => null,
-    currentUser: null,
+  setCurrentUser: () => null,
+  currentUser: null,
 });
 
 export const UserProvider = () => {
-    const [currentUser, setCurrentUser] = useState(null);
-    const value = { currentUser, setCurrentUser };
+  const [currentUser, setCurrentUser] = useState(null);
+  const value = { currentUser, setCurrentUser };
 
-    useEffect(() => {
-        const unsubscribe = onAuthStateChangedListener((user) => {
-            if (user) {
-                createUserDocumentFromAuth(user);
-            }
-            setCurrentUser(user);
-        });
+  useEffect(() => {
+    const unsubscribe = onAuthStateChangedListener((user) => {
+      if (user) {
+        createUserDocumentFromAuth(user);
+      }
+      setCurrentUser(user);
+    });
 
-        return unsubscribe;
-    }, []);
+    return unsubscribe;
+  }, []);
 
-    return value
+  return value;
 };
