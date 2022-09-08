@@ -9,14 +9,20 @@
   background-color: black;
   color: white;
   text-transform: uppercase;
-  font-family: 'Open Sans Condensed';
+  font-family: "Open Sans Condensed";
   font-weight: bolder;
   border: none;
   cursor: pointer;
   display: flex;
   justify-content: center;
 
-  &:hover {
+  &:disabled {
+    cursor: not-allowed;
+    background-color: rgb(182, 182, 182);
+
+  }
+
+  &:hover:enabled {
     background-color: white;
     color: black;
     border: 1px solid black;
